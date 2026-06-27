@@ -10,45 +10,52 @@
         font-family: Arial, sans-serif;
         background-color: #fdfbf7;
         margin: 0;
-        padding: 20px;
+        /* Tăng khoảng không ở dưới cùng và 2 bên để người dùng có chỗ để vuốt ngón tay cuộn trang */
+        padding: 15px 20px 120px 20px;
       }
       .game-container {
         margin-bottom: 20px;
         display: flex;
         justify-content: center;
+        width: 100%;
       }
 
+      /* Chỉnh lại chiều cao game tương thích với màn hình điện thoại */
       iframe {
         width: 100%;
         max-width: 800px;
-        height: 500px;
+        height: 50vh; /* Tự động co giãn bằng 50% chiều cao màn hình điện thoại */
+        min-height: 350px;
         border: none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
       }
 
-      /* Chỉnh lại khu vực nhập mã */
+      /* Cấu trúc lại khu vực nhập mã cho dễ thao tác trên mobile */
       #unlock-section {
         margin-top: 15px;
         display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
+        flex-direction: column; /* Xếp ô nhập mã và nút bấm thành hàng dọc */
+        align-items: center;
+        gap: 15px;
       }
       input[type="text"] {
-        padding: 12px;
+        padding: 15px;
         font-size: 16px;
         border-radius: 8px;
         border: 1px solid #ccc;
         outline: none;
-        width: 250px;
+        width: 100%;
+        max-width: 300px;
         text-transform: uppercase;
+        text-align: center;
+        box-sizing: border-box;
       }
 
       .btn-reward {
         background-color: #f39c12;
         color: white;
-        padding: 12px 25px;
+        padding: 15px 25px;
         font-size: 16px;
         font-weight: bold;
         border: none;
@@ -56,13 +63,15 @@
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: 0.3s;
+        width: 100%;
+        max-width: 300px;
+        box-sizing: border-box;
       }
       .btn-reward:hover {
         background-color: #e67e22;
         transform: scale(1.05);
       }
 
-      /* Ẩn ảnh giải thưởng đi ngay từ đầu */
       #prize-image {
         max-width: 100%;
         height: auto;
@@ -72,12 +81,15 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       }
       .instruction {
-        font-size: 16px;
+        font-size: 15px;
         color: #555;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        line-height: 1.4;
       }
       h2 {
         color: #d35400;
+        margin-top: 5px;
+        font-size: 22px;
       }
     </style>
   </head>
