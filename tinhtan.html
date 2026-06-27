@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hành Trình Bàu Sen - Đội Tinh Tấn</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #fdfbf7;
+        margin: 0;
+        padding: 20px;
+      }
+      .game-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      iframe {
+        width: 100%;
+        max-width: 800px;
+        height: 500px;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      /* Chỉnh lại khu vực nhập mã */
+      #unlock-section {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      input[type="text"] {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        width: 250px;
+        text-transform: uppercase;
+      }
+
+      .btn-reward {
+        background-color: #f39c12;
+        color: white;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+      .btn-reward:hover {
+        background-color: #e67e22;
+        transform: scale(1.05);
+      }
+
+      /* Ẩn ảnh giải thưởng đi ngay từ đầu */
+      #prize-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        display: none;
+        margin: 20px auto;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .instruction {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+      h2 {
+        color: #d35400;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Trạm Thử Thách - Đội Tinh Tấn</h2>
+    <p class="instruction" id="text-guide">
+      Hãy lật mở và tìm tất cả các cặp hình. Sau khi hoàn thành, hãy báo cáo với
+      Trạm trưởng để lấy Mật mã!
+    </p>
+
+    <div class="game-container" id="wordwall-game">
+      <!-- Mã game Wordwall -->
+      <iframe
+        style="max-width: 100%"
+        src="https://wordwall.net/vi/embed/f9e597dda65e4a5bb365d52bdd413164?themeId=52&templateId=25&fontStackId=0"
+        width="500"
+        height="380"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- KHU VỰC NHẬP MẬT MÃ -->
+    <div id="unlock-section">
+      <input
+        type="text"
+        id="secret-code"
+        placeholder="Nhập mật mã mở khóa..."
+      />
+      <button class="btn-reward" onclick="checkCode()">XÁC NHẬN</button>
+    </div>
+
+    <!-- ẢNH GIẢI THƯỞNG -->
+    <img
+      id="prize-image"
+      src="GiayKhen_GiaiNhat_TinhTan.png"
+      alt="Giấy chứng nhận Giải Nhất Đội Tinh Tấn"
+    />
+
+    <script>
+      function checkCode() {
+        // Bạn có thể đổi MẬT MÃ ở đây cho từng đội (Ví dụ: TINHTAN, TRITUE,...)
+        var correctCode = "TINHTAN_2026";
+
+        // Lấy dữ liệu người dùng nhập, tự động in hoa và xóa khoảng trắng thừa
+        var userCode = document
+          .getElementById("secret-code")
+          .value.trim()
+          .toUpperCase();
+
+        if (userCode === correctCode) {
+          // Nếu ĐÚNG: Ẩn game, ẩn chỗ nhập mã, hiện ảnh chứng nhận
+          document.getElementById("wordwall-game").style.display = "none";
+          document.getElementById("unlock-section").style.display = "none";
+          document.getElementById("text-guide").style.display = "none";
+
+          document.getElementById("prize-image").style.display = "block";
+        } else {
+          // Nếu SAI: Hiện thông báo nhắc nhở
+          alert(
+            "Mật mã chưa chính xác! Các bạn phải hoàn thành game và hỏi xin Trạm trưởng nhé.",
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
