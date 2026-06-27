@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hành Trình Bàu Sen - Đội Từ Bi</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #fdfbf7;
+        margin: 0;
+        padding: 15px 20px 120px 20px;
+      }
+      .game-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        max-width: 800px;
+        height: 50vh;
+        min-height: 350px;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      #unlock-section {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      input[type="text"] {
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        width: 100%;
+        max-width: 300px;
+        text-transform: uppercase;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .btn-reward {
+        background-color: #007bff; /* Tông màu xanh dương cho Đội Từ Bi */
+        color: white;
+        padding: 15px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        width: 100%;
+        max-width: 300px;
+        box-sizing: border-box;
+      }
+      .btn-reward:hover {
+        background-color: #0056b3; /* Xanh dương đậm hơn khi lướt chuột */
+        transform: scale(1.05);
+      }
+
+      #prize-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        display: none;
+        margin: 20px auto;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .instruction {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.4;
+      }
+      h2 {
+        color: #007bff; /* Tông màu xanh dương */
+        margin-top: 5px;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Trạm Thử Thách - Đội Từ Bi</h2>
+    <p class="instruction" id="text-guide">
+      Hãy lật mở và tìm tất cả các cặp hình. Sau khi hoàn thành, hãy báo cáo với
+      Trạm trưởng để lấy Mật mã!
+    </p>
+
+    <div class="game-container" id="wordwall-game">
+      <!-- Mã game Wordwall dành riêng cho Đội Từ Bi -->
+      <iframe
+        style="max-width: 100%"
+        src="https://wordwall.net/vi/embed/15397494a4c146569dd43fcaf68346ec?themeId=49&templateId=25&fontStackId=0"
+        width="500"
+        height="380"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- KHU VỰC NHẬP MẬT MÃ -->
+    <div id="unlock-section">
+      <input
+        type="text"
+        id="secret-code"
+        placeholder="Nhập mật mã mở khóa..."
+      />
+      <button class="btn-reward" onclick="checkCode()">XÁC NHẬN</button>
+    </div>
+
+    <!-- ẢNH GIẢI THƯỞNG -->
+    <!-- Đổi tên file ảnh tương ứng với giải thưởng của Đội Từ Bi -->
+    <img
+      id="prize-image"
+      src="GiayKhen_TuBi.png"
+      alt="Giấy chứng nhận Đội Từ Bi"
+    />
+
+    <script>
+      function checkCode() {
+        // Mật mã mới cho Đội Từ Bi
+        var correctCode = "TUBI_2026";
+
+        var userCode = document
+          .getElementById("secret-code")
+          .value.trim()
+          .toUpperCase();
+
+        if (userCode === correctCode) {
+          document.getElementById("wordwall-game").style.display = "none";
+          document.getElementById("unlock-section").style.display = "none";
+          document.getElementById("text-guide").style.display = "none";
+
+          document.getElementById("prize-image").style.display = "block";
+        } else {
+          alert(
+            "Mật mã chưa chính xác! Các bạn phải hoàn thành game và hỏi xin Trạm trưởng nhé.",
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
